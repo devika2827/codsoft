@@ -1,0 +1,47 @@
+tasks= {}
+def add_task(task):
+    tasks[task] = "Not Done"
+
+def update_task(task, status):
+    if task in tasks:
+        tasks[task] = status
+        print(f"Task '{task}' updated to '{status}'.")
+    else:
+        print(f"Task '{task}' not found in the to-do list.")
+
+def display_tasks():
+    if not tasks:
+        print("No tasks in the to-do list.")
+    else:
+        print("To-Do List:")
+        for task, status in tasks.items():
+            print(f"- {task}: {status}")
+
+
+while True:
+    print("Select operation:")
+    print("1. Add Task")
+    print("2. Update Task Status")
+    print("3. Display Tasks")
+    print("4. Exit")
+
+    choice = input("Enter choice (1/2/3/4): ")
+
+    if choice == '1':
+        new_task = input("Enter the task to add: ")
+        add_task(new_task)
+
+    elif choice == '2':
+        task_to_update = input("Enter the task to update: ")
+        new_status = input("Enter the new status (Done/Not Done): ")
+        update_task(task_to_update, new_status)
+
+    elif choice == '3':
+        display_tasks()
+    
+    elif choice == '4':
+        print("Exiting. Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Please enter a valid option.")
